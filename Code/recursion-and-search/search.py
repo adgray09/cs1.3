@@ -69,9 +69,9 @@ def binary_search_recursive(array, item, left=None, right=None):
         if array[mid] == item:
             return mid
         elif array[mid] > right:
-            return binary_search_recursive(array, item, mid-1, right)
+            return binary_search_recursive(array, item, mid-1 , right)
         else:
-            return binary_search_recursive(array, item, left, right+1)
+            return binary_search_recursive(array, item, left, mid+1)
     else: 
         return -1
         
