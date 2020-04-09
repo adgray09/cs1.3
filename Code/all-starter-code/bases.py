@@ -17,13 +17,21 @@ def decode(digits, base):
     return: int -- integer representation of number (in base 10)"""
     # Handle up to base 36 [0-9a-z]
     assert 2 <= base <= 36, 'base is out of range: {}'.format(base)
-    # TODO: Decode digits from binary (base 2)
-    # ...
-    # TODO: Decode digits from hexadecimal (base 16)
-    # ...
-    # TODO: Decode digits from any base (2 up to 36)
-    # ...
+    
+    decimalnum = 0
+    digits = digits[::-1]
+    for i in range(len(digits)):
+        digit = int(digits[i], base=base)
+        decimalnum += digit * base ** i 
+    return decimalnum
 
+
+def letter_from_num(num):
+    """ Convert letter from number:
+    input: int -- integer representation of number (in base 10)
+    return: strings of letters """
+    letters  ='abcdefghijklmnopqrstuvwxyz'
+    return letters[num - 10]
 
 def encode(number, base):
     """Encode given number in base 10 to digits in given base.
@@ -40,7 +48,7 @@ def encode(number, base):
     # ...
     # TODO: Encode number in any base (2 up to 36)
     # ...
-
+    
 
 def convert(digits, base1, base2):
     """Convert given digits in base1 to digits in base2.
@@ -59,6 +67,8 @@ def convert(digits, base1, base2):
     # ...
     # TODO: Convert digits from any base to any base (2 up to 36)
     # ...
+    
+
 
 
 def main():
