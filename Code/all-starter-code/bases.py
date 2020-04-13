@@ -8,6 +8,8 @@ import string
 # string.ascii_uppercase is 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 # string.ascii_letters is ascii_lowercase + ascii_uppercase
 # string.printable is digits + ascii_letters + punctuation + whitespace
+def digit_to_ascii(digit):
+    return string.printable[digit]
 
 
 def decode(digits, base):
@@ -48,6 +50,12 @@ def encode(number, base):
     # ...
     # TODO: Encode number in any base (2 up to 36)
     # ...
+    encoded_number = ''
+
+    while number >= 1:
+        encoded_number += str(digit_to_ascii(number % base))
+        number = number // base
+    return encoded_number[::-1]
     
 
 def convert(digits, base1, base2):
@@ -67,6 +75,10 @@ def convert(digits, base1, base2):
     # ...
     # TODO: Convert digits from any base to any base (2 up to 36)
     # ...
+    base_10_number = decode(digits, base1)
+    converted_number = encode(base_10_number, base2)
+    return converted_number
+
     
 
 
